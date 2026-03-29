@@ -151,12 +151,11 @@ On some systems the launcher is `python3` instead of `python`.
 
 ## Git
 
-Initialize once (if not already a repo):
+This folder is a Git repository. After cloning elsewhere:
 
 ```bash
-git init
-git add .
-git commit -m "Initial commit: webinar data structures examples"
+cd webinar-data-structures
+cd typescript && npm install && cd ..
 ```
 
-`node_modules/` and build outputs are ignored via `.gitignore`.
+`node_modules/`, `bin/`, `obj/`, `__pycache__/`, and common IDE files are ignored via `.gitignore`.
