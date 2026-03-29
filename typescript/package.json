@@ -1,0 +1,22 @@
+{
+  "name": "webinar-data-structures-ts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "arrays": "tsx src/01_arrays.ts",
+    "generics": "tsx src/02_generics_api_response.ts",
+    "lists": "tsx src/03_lists_qa.ts",
+    "tuples": "tsx src/04_tuples.ts",
+    "sets": "tsx src/05_sets.ts",
+    "maps": "tsx src/06_maps.ts",
+    "stack": "tsx src/07_stack.ts",
+    "queue": "tsx src/08_queue.ts",
+    "tree": "tsx src/09_tree_bst.ts",
+    "transforms": "tsx src/10_collection_transforms.ts",
+    "challenge": "tsx src/11_challenge_most_frequent_char.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
