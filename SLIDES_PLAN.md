@@ -1,165 +1,165 @@
-# План слайдів: «Структури даних у програмуванні: від теорії до практики»
+# Slide plan: «Data structures in programming: from theory to practice»
 
-Принцип як у попередній презентації: **коротка теорія / визначення → приклад коду**. Частину коду можна винести на слайди (скорочено), повні фрагменти — з папок `csharp/`, `typescript/`, `python/`.
+Same principle as the previous deck: **short theory / definition → code example**. Put abbreviated snippets on slides; full samples live in `csharp/`, `typescript/`, and `python/`.
 
-**Посилання на матеріали автора**
+**Author references**
 
 - [Data Structures for QA Automation (C#)](https://medium.com/@dneprokos/data-structures-for-qa-automation-engineers-993135928456)
 - [SDET: The Magic of Python Data Structures](https://medium.com/@dneprokos/sdet-the-magic-of-python-data-structures-3040e7da342d)
 
 ---
 
-## Блок 1 — Вступ
+## Block 1 — Introduction
 
-| # | Слайд | Зміст | Код (репозиторій) |
-|---|--------|--------|-------------------|
-| 1 | Титул | Назва вебінару, спікер, мови: C#, TypeScript, Python | — |
-| 2 | Хто я / контакти | Досвід, стек (як у старій презентації, оновити мови) | — |
-| 3 | Що таке структура даних | Організація даних для ефективного доступу й змін; посилання на Wikipedia (як у старому ppt) | — |
-| 4 | Навіщо QA Automation | Тестові дані, швидкість тестів, фреймворки (API/UI), дедуплікація, черги задач, пули ресурсів | — |
-| 5 | Agenda | Масиви → узагальнення/типи → списки → кортежі → множини → словники → стек → черга → дерево/BST → «зведення» колекцій → фінальна задача | — |
-
----
-
-## Блок 2 — Масиви та «сирі» послідовності
-
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 6 | Array / фіксований розмір | Індекс з 0, фіксована довжина (C#); у Python — часто `list` як динамічний масив; у TS — `Array` | **Слайд:** ідея. **Live:** `01_arrays` |
-| 7 | QA-кейс: query string | `?ids=2,5,7` з набору id (з Medium, C#) | `01_arrays` |
-| 8 | QA-кейс: парсинг рядка | Витягнути цифри з рядка й порахувати суму (з Medium) | `01_arrays` |
+| # | Slide | Content | Code (repo) |
+|---|--------|---------|-------------|
+| 1 | Title | Webinar title, speaker, languages: C#, TypeScript, Python | — |
+| 2 | About me / contacts | Experience, stack (like the old deck; update languages) | — |
+| 3 | What is a data structure | Organizing data for efficient access and change; Wikipedia link (as in old ppt) | — |
+| 4 | Why QA automation | Test data, test speed, frameworks (API/UI), deduplication, job queues, resource pools | — |
+| 5 | Agenda | Arrays → generics/types → lists → tuples → sets → maps → stack → queue → tree/BST → collection transforms → final challenge | — |
 
 ---
 
-## Блок 3 — Узагальнення та типізовані моделі
+## Block 2 — Arrays and “raw” sequences
 
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 9 | Generics / узагальнені типи | Placeholder типу, перевикористання, type safety (як слайди Generics у старому ppt) | **Теорія на слайді** |
-| 10 | QA-кейс: API response | `RestResponse<T>` — однаковий StatusCode, різний Body (з Medium) | `02_generics_api_response` |
-
----
-
-## Блок 4 — Списки (List / масиви в TS / list у Python)
-
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 11 | List | Динамічний розмір, індексація, типові операції (аналог ArrayList у Java зі старого ppt) | `03_lists_qa` |
-| 12 | QA: колекція елементів | Симуляція «знайдені елементи»: перевірка кількості, очікування > N (з Medium) | `03_lists_qa` |
-| 13 | QA: список у моделі відповіді | Список записів з API без фіксованої кількості | `03_lists_qa` |
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 6 | Array / fixed size | Zero-based index, fixed length (C#); in Python often `list` as dynamic array; in TS `Array` | **Slide:** concept. **Live:** `01_arrays` |
+| 7 | QA case: query string | `?ids=2,5,7` from a set of ids (from Medium, C#) | `01_arrays` |
+| 8 | QA case: string parsing | Extract digits from a string and sum them (from Medium) | `01_arrays` |
 
 ---
 
-## Блок 5 — Кортежі
+## Block 3 — Generics and typed models
 
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 14 | Tuple | Невелика фіксована послідовність значень; immutable у Python; ValueTuple / tuple у C# | `04_tuples` |
-| 15 | QA-кейс | Повернути з хелпера «користувач + замовлення» одним значенням | `04_tuples` |
-
----
-
-## Блок 6 — Множини (Set / HashSet)
-
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 16 | Set / Hash Set | Унікальність, без дублікатів; нагадування про hash table (як у старому ppt) | `05_sets` |
-| 17 | QA-кейс | Об’єднати результати з кількох джерел без дублікатів | `05_sets` |
-| 18 | Операції (опційно на слайді) | Union / Intersect / Except (C#), `\| & -` (Python), тощо | `05_sets` |
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 9 | Generics | Type placeholders, reuse, type safety (as Generics slides in old ppt) | **Theory on slide** |
+| 10 | QA case: API response | `RestResponse<T>` — same StatusCode, varying Body (from Medium) | `02_generics_api_response` |
 
 ---
 
-## Блок 7 — Словники / Map / Dictionary
+## Block 4 — Lists (List / arrays in TS / list in Python)
 
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 19 | Dictionary / Map | Ключ → значення; унікальність ключа; зв’язок з JSON | `06_maps` |
-| 20 | QA-кейс: оператори SQL | Enum/рядок → фрагмент SQL (з Medium) | `06_maps` |
-| 21 | QA-кейс: дані прогону | Напр. назва книги → ціна; конфіг ключ → значення | `06_maps` |
-
----
-
-## Блок 8 — Стек (LIFO)
-
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 22 | Stack | LIFO, аналогія з тарілками (старий ppt + Medium) | `07_stack` |
-| 23 | QA-кейс | Пул clientId: взяти зверху для паралельних тестів, повернути в cleanup (з Medium) | `07_stack` |
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 11 | List | Dynamic size, indexing, common operations (ArrayList in Java analogy from old ppt) | `03_lists_qa` |
+| 12 | QA: element collection | Simulate “found elements”: count checks, expect count > N (from Medium) | `03_lists_qa` |
+| 13 | QA: list in response model | List of API records with unknown length | `03_lists_qa` |
 
 ---
 
-## Блок 9 — Черга (FIFO)
+## Block 5 — Tuples
 
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 24 | Queue | FIFO, черга в парку розваг (старий ppt) | `08_queue` |
-| 25 | QA-кейс | Черга задач/подій; у Python — `collections.deque` (з Python-статті) | `08_queue` |
-
----
-
-## Блок 10 — Дерева
-
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 26 | Tree | Ієрархія, root, children, leaf; зв’язок з DOM/UI (для QA) | **Теорія** |
-| 27 | Термінологія | Root, node, edge, path, leaf, height, level, parent, sibling (як slide 45 старого ppt) | — |
-| 28 | Binary tree / BST | До двох нащадків; BST: ліворуч ≤ батько < праворуч (slide 46) | `09_tree_bst` |
-| 29 | QA-інтуїція | Дерева рішень, DOM, іноді логіка фільтрації/пошуку | **Коротко на слайді** |
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 14 | Tuple | Small fixed sequence of values; immutable in Python; ValueTuple / tuple in C# | `04_tuples` |
+| 15 | QA case | Return “user + orders” from a helper as one value | `04_tuples` |
 
 ---
 
-## Блок 11 — Робота з колекціями «вищого рівня»
+## Block 6 — Sets (Set / HashSet)
 
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 30 | LINQ / методи масиву / comprehension | Фільтр, проекція, агрегації (Sum, Where, Select — старий ppt; у Python — list comp / map / filter) | `10_collection_transforms` |
-| 31 | Паралель JS/TS | `filter` / `map` / `reduce` для тестових даних | `10_collection_transforms` |
-
----
-
-## Блок 12 — Комбінування структур
-
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 32 | Задача | Найчастіший символ у рядку (інтерв’ю-стиль + Python-стаття) | `11_challenge_most_frequent_char` |
-| 33 | Розбір | Словник частот → сортування пар → перший елемент / `MaxBy` | `11_challenge_most_frequent_char` |
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 16 | Set / hash set | Uniqueness, no duplicates; tie-in to hash table (as in old ppt) | `05_sets` |
+| 17 | QA case | Merge results from several sources without duplicates | `05_sets` |
+| 18 | Operations (optional on slide) | Union / Intersect / Except (C#), `\| & -` (Python), etc. | `05_sets` |
 
 ---
 
-## Блок 13 — Закриття
+## Block 7 — Dictionaries / Map / Dictionary
 
-| # | Слайд | Зміст | Код |
-|---|--------|--------|-----|
-| 34 | Практика | HackerRank Interview Prep Kit (як у старому ppt) | — |
-| 35 | Ресурси | Документація .NET Collections, MDN, Python docs; ваш GitHub з прикладами | — |
-| 36 | Питання | Q&A | — |
-
----
-
-## Як користуватися папками з кодом
-
-| Папка | Запуск |
-|--------|--------|
-| `csharp/DataStructuresQA` | З каталогу проєкту: `dotnet run` (усі приклади) або `dotnet run -- arrays` / `dotnet run -- challenge` тощо; `dotnet run -- help` — список ключів |
-| `typescript` | `npm install` → `npx tsx src/01_arrays.ts` (замініть ім’я файлу) |
-| `python` | `python 01_arrays.py` (з кореня `python/`) |
-
-**Рекомендація для слайдів:** на слайд виносити 5–15 рядків «ядра»; повний файл залишати для live demo або homework.
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 19 | Dictionary / map | Key → value; unique keys; link to JSON | `06_maps` |
+| 20 | QA case: SQL operators | Enum/string → SQL fragment (from Medium) | `06_maps` |
+| 21 | QA case: run-scoped data | e.g. book title → price; config key → value | `06_maps` |
 
 ---
 
-## Відповідність нумерації файлів
+## Block 8 — Stack (LIFO)
 
-| Файл | Тема |
-|------|------|
-| `01_arrays` | Масиви, query string, сума цифр |
-| `02_generics_api_response` | Узагальнена модель відповіді API |
-| `03_lists_qa` | Списки та QA-сценарії |
-| `04_tuples` | Кортежі, повернення кількох значень |
-| `05_sets` | Множини, дедуплікація, операції |
-| `06_maps` | Словники, SQL-оператори, конфіг |
-| `07_stack` | Стек, пул ресурсів LIFO |
-| `08_queue` | Черга FIFO |
-| `09_tree_bst` | Просте BST, пошук |
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 22 | Stack | LIFO, stack-of-plates analogy (old ppt + Medium) | `07_stack` |
+| 23 | QA case | `clientId` pool: pop for parallel tests, push back in cleanup (from Medium) | `07_stack` |
+
+---
+
+## Block 9 — Queue (FIFO)
+
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 24 | Queue | FIFO, amusement-park line (old ppt) | `08_queue` |
+| 25 | QA case | Task/event queue; in Python — `collections.deque` (from Python article) | `08_queue` |
+
+---
+
+## Block 10 — Trees
+
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 26 | Tree | Hierarchy, root, children, leaf; DOM/UI tie-in (for QA) | **Theory** |
+| 27 | Terminology | Root, node, edge, path, leaf, height, level, parent, sibling (like old ppt slide 45) | — |
+| 28 | Binary tree / BST | At most two children; BST: left ≤ parent < right (slide 46) | `09_tree_bst` |
+| 29 | QA intuition | Decision trees, DOM, sometimes filter/search logic | **Brief on slide** |
+
+---
+
+## Block 11 — Higher-level collection work
+
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 30 | LINQ / array methods / comprehensions | Filter, projection, aggregates (Sum, Where, Select — old ppt; Python — list comp / map / filter) | `10_collection_transforms` |
+| 31 | JS/TS parallel | `filter` / `map` / `reduce` on test data | `10_collection_transforms` |
+
+---
+
+## Block 12 — Combining structures
+
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 32 | Challenge | Most frequent character in a string (interview-style + Python article) | `11_challenge_most_frequent_char` |
+| 33 | Walkthrough | Frequency map → sort pairs → first element / `MaxBy` | `11_challenge_most_frequent_char` |
+
+---
+
+## Block 13 — Closing
+
+| # | Slide | Content | Code |
+|---|--------|---------|------|
+| 34 | Practice | HackerRank Interview Prep Kit (as in old ppt) | — |
+| 35 | Resources | .NET Collections docs, MDN, Python docs; your GitHub with examples | — |
+| 36 | Questions | Q&A | — |
+
+---
+
+## How to use the code folders
+
+| Folder | Run |
+|--------|-----|
+| `csharp/DataStructuresQA` | From the project directory: `dotnet run` (all demos) or `dotnet run -- arrays` / `dotnet run -- challenge`, etc.; `dotnet run -- help` lists keys |
+| `typescript` | `npm install` → `npx tsx src/01_arrays.ts` (change the filename as needed) |
+| `python` | `python 01_arrays.py` (from the `python/` folder) |
+
+**Slide tip:** show 5–15 lines of the “core” on a slide; keep the full file for live demo or homework.
+
+---
+
+## File numbering map
+
+| File | Topic |
+|------|--------|
+| `01_arrays` | Arrays, query string, digit sum |
+| `02_generics_api_response` | Generic API response model |
+| `03_lists_qa` | Lists and QA scenarios |
+| `04_tuples` | Tuples, returning multiple values |
+| `05_sets` | Sets, deduplication, operations |
+| `06_maps` | Maps/dicts, SQL operators, config |
+| `07_stack` | Stack, LIFO resource pool |
+| `08_queue` | FIFO queue |
+| `09_tree_bst` | Minimal BST, lookup |
 | `10_collection_transforms` | LINQ / map-filter / comprehension |
-| `11_challenge_most_frequent_char` | Комбінація dict + сортування |
+| `11_challenge_most_frequent_char` | Dict + sorting combined |
