@@ -1,161 +1,134 @@
-# Webinar: Data structures (C#, TypeScript, Python)
+# Webinar: Data Structures for QA Engineers
 
-Code examples and a slide outline for the talk **«Структури даних у програмуванні: від теорії до практики»**.
-
-- **Slide plan:** [SLIDES_PLAN.md](./SLIDES_PLAN.md)
-
-## Prerequisites
-
-| Stack       | Requirement |
-|------------|-------------|
-| C#         | [.NET SDK](https://dotnet.microsoft.com/download) 8.0 or newer (9.x works) |
-| TypeScript | [Node.js](https://nodejs.org/) 18+ (includes `npm`) |
-| Python     | Python 3.8+ (3.10+ recommended) |
-
-## Repository layout
-
-```
-webinar-data-structures/
-├── SLIDES_PLAN.md
-├── csharp/DataStructuresQA/   # .NET console app (all examples)
-├── typescript/                # Node + tsx, one file per topic
-└── python/                    # One script per topic
-```
-
-Numbered topics (same order everywhere): `01` arrays → `11` most-frequent-character challenge.
+Practical examples in **C#**, **Python**, and **TypeScript** covering the most important data structures, generics, collection operations, and coding challenges relevant to QA automation.
 
 ---
 
-## C# (`csharp/DataStructuresQA`)
+## Repository Layout
 
-### Build
+```
+webinar-data-structures/
+├── csharp/DataStructuresQA/
+│   ├── 00_generics/           ← Generics, type constraints, typed API responses
+│   ├── 01_arrays/             ← Arrays and List<T>
+│   ├── 02_lists/              ← List<T> in depth
+│   ├── 03_tuples/             ← ValueTuples and named fields
+│   ├── 04_sets/               ← HashSet<T> and set operations
+│   ├── 05_dictionaries/       ← Dictionary<K,V> and maps
+│   ├── 06_stacks/             ← Stack<T> — LIFO
+│   ├── 07_queues/             ← Queue<T> — FIFO
+│   ├── 08_linked_lists/       ← LinkedList<T> — nodes and references
+│   ├── 09_trees/              ← Binary Search Tree
+│   ├── 10_linq/               ← LINQ: filter, project, aggregate, sort, group
+│   └── 11_challenges/         ← Coding challenges
+│
+├── python/
+│   ├── 00_generics/           ← TypeVar, Generic, Protocol
+│   ├── 01_arrays/             ← list (Python's dynamic array)
+│   ├── 02_lists/ … 07_queues/ ← Same topics as C#
+│   ├── 08_linked_lists/       ← Custom SinglyLinkedList — nodes and references
+│   ├── 09_trees/              ← Binary Search Tree
+│   ├── 10_collection_operations/ ← Comprehensions, filter/map/reduce, itertools
+│   └── 11_challenges/
+│
+└── typescript/src/
+    ├── 00_generics/ … 07_queues/  ← Same topics
+    ├── 08_linked_lists/           ← Custom SinglyLinkedList<T> — nodes and references
+    ├── 09_trees/                  ← Binary Search Tree
+    ├── 10_collection_operations/  ← .filter/.map/.reduce/.sort/.slice
+    └── 11_challenges/
+```
+
+### File Structure (per topic folder)
+
+| File | Purpose |
+|------|---------|
+| `README.md` | What the data structure is, Big-O table, when to use |
+| `01_Initialization` | All ways to create the structure |
+| `02_AccessingElements` | Read by index/key, iterate, search |
+| `03_CommonMethods` | Add, remove, sort, and built-in helpers |
+| `04_Conversions` | Convert to/from other types |
+| `05_QaExample` | Practical QA automation scenario |
+
+---
+
+## Prerequisites
+
+| Language | Requirement |
+|----------|-------------|
+| C# | .NET 8 SDK or later |
+| Python | Python 3.12+ |
+| TypeScript | Node.js 20+, `npm install` inside `typescript/` |
+
+---
+
+## Running Examples
+
+### C#
 
 ```bash
 cd csharp/DataStructuresQA
-dotnet build
-```
 
-### Run
-
-Run **all** examples in order (default):
-
-```bash
+# Run all demos
 dotnet run
-```
 
-Run a **single** topic by key:
-
-```bash
+# Run a specific topic
 dotnet run -- arrays
 dotnet run -- generics
 dotnet run -- lists
 dotnet run -- tuples
 dotnet run -- sets
-dotnet run -- maps
-dotnet run -- stack
-dotnet run -- queue
-dotnet run -- tree
-dotnet run -- transforms
+dotnet run -- dicts
+dotnet run -- stacks
+dotnet run -- queues
+dotnet run -- linked
+dotnet run -- trees
+dotnet run -- linq
 dotnet run -- challenge
-```
 
-List keys:
-
-```bash
+# Help
 dotnet run -- help
 ```
 
-From the repo root (any shell):
+### Python
 
 ```bash
-dotnet run --project csharp/DataStructuresQA/DataStructuresQA.csproj -- challenge
+# Run any file directly
+python python/01_arrays/05_qa_example.py
+python python/09_collection_operations/05_qa_example.py
+python python/10_challenges/01_most_frequent_char.py
 ```
 
----
-
-## TypeScript (`typescript`)
-
-### Install
+### TypeScript
 
 ```bash
 cd typescript
 npm install
-```
 
-### Run
-
-Per file with `tsx`:
-
-```bash
-npx tsx src/01_arrays.ts
-npx tsx src/02_generics_api_response.ts
-npx tsx src/03_lists_qa.ts
-npx tsx src/04_tuples.ts
-npx tsx src/05_sets.ts
-npx tsx src/06_maps.ts
-npx tsx src/07_stack.ts
-npx tsx src/08_queue.ts
-npx tsx src/09_tree_bst.ts
-npx tsx src/10_collection_transforms.ts
-npx tsx src/11_challenge_most_frequent_char.ts
-```
-
-Or use npm scripts:
-
-```bash
-npm run arrays
-npm run generics
-npm run lists
-npm run tuples
-npm run sets
-npm run maps
-npm run stack
-npm run queue
-npm run tree
-npm run transforms
+# Run a specific script (see package.json for all keys)
+npm run arrays:qa
+npm run col:qa
 npm run challenge
-```
 
-Optional typecheck (no emit):
-
-```bash
-npx tsc --noEmit
+# Or run any file directly
+npx tsx src/01_arrays/05_qa_example.ts
 ```
 
 ---
 
-## Python (`python`)
+## Topics Covered
 
-No install step; standard library only (plus `dataclasses` / `typing` / `enum` / `collections`).
-
-Run from the `python` folder:
-
-```bash
-cd python
-python 01_arrays.py
-python 02_generics_api_response.py
-python 03_lists_qa.py
-python 04_tuples.py
-python 05_sets.py
-python 06_maps.py
-python 07_stack.py
-python 08_queue.py
-python 09_tree_bst.py
-python 10_collection_transforms.py
-python 11_challenge_most_frequent_char.py
-```
-
-On some systems the launcher is `python3` instead of `python`.
-
----
-
-## Git
-
-This folder is a Git repository. After cloning elsewhere:
-
-```bash
-cd webinar-data-structures
-cd typescript && npm install && cd ..
-```
-
-`node_modules/`, `bin/`, `obj/`, `__pycache__/`, and common IDE files are ignored via `.gitignore`.
+| # | Topic | Key Concepts |
+|---|-------|-------------|
+| 00 | Generics | Type parameters, constraints, typed API wrappers |
+| 01 | Arrays | Fixed arrays, dynamic arrays (`List<T>`), LINQ operations |
+| 02 | Lists | Dynamic ordered collection, add/remove/sort |
+| 03 | Tuples | Multiple return values, named fields, destructuring |
+| 04 | Sets | Uniqueness, set operations (union/intersect/diff) |
+| 05 | Dictionaries | Key-value lookup, frequency maps, config |
+| 06 | Stacks | LIFO, undo/redo, resource pools |
+| 07 | Queues | FIFO, job scheduling, event processing |
+| 08 | Linked Lists | Nodes and references, O(1) insert, O(n) traversal, browser history |
+| 09 | Trees (BST) | Hierarchical data, sorted lookup, traversals |
+| 10 | LINQ / Collection Ops | Filter, project, aggregate, sort, group |
+| 11 | Challenges | Most frequent character, log analysis |
