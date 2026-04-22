@@ -58,3 +58,23 @@ Push 101, 102, 103          Pop
 | Peek | `stack.Peek()` | `stack[-1]` | `stack[stack.length - 1]` |
 | Size | `stack.Count` | `len(stack)` | `stack.length` |
 | Empty check | `stack.Count == 0` | `not stack` | `stack.length === 0` |
+
+## Library Implementations (06)
+
+When you need a dedicated, purpose-built stack rather than a bare `list` or array:
+
+| Language | Library | Type | Notes |
+|----------|---------|------|-------|
+| Python | `queue` (stdlib) | `LifoQueue[T]` | Thread-safe; uses internal locks. Best when multiple threads push/pop. |
+| TypeScript | `js-sdsl` | `Stack<T>` | Explicit `.top()` peek; clearer intent than `arr[arr.length-1]`. |
+
+**When to choose the library type:**
+- Python: use `queue.LifoQueue` when producers and consumers run in separate threads; use `list` for single-threaded code.
+- TypeScript: use `js-sdsl Stack<T>` when you want an explicit, self-documenting stack API; use a plain array for simple scripts.
+
+Run the example:
+```bash
+npm run stacks:lib
+```
+
+See `06_library_example.ts` for the full runnable example.

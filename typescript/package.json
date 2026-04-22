@@ -24,8 +24,10 @@
     "dicts:qa": "tsx src/05_dictionaries/05_qa_example.ts",
     "stacks:init": "tsx src/06_stacks/01_initialization.ts",
     "stacks:qa": "tsx src/06_stacks/05_qa_example.ts",
+    "stacks:lib": "tsx src/06_stacks/06_library_example.ts",
     "queues:init": "tsx src/07_queues/01_initialization.ts",
     "queues:qa": "tsx src/07_queues/05_qa_example.ts",
+    "queues:lib": "tsx src/07_queues/06_library_example.ts",
     "linked:init": "tsx src/08_linked_lists/01_initialization.ts",
     "linked:methods": "tsx src/08_linked_lists/03_common_methods.ts",
     "linked:qa": "tsx src/08_linked_lists/05_qa_example.ts",
@@ -37,6 +39,9 @@
     "col:sort": "tsx src/10_collection_operations/04_sorting_and_slicing.ts",
     "col:qa": "tsx src/10_collection_operations/05_qa_example.ts",
     "challenge": "tsx src/11_challenges/01_most_frequent_char.ts"
+  },
+  "dependencies": {
+    "js-sdsl": "^4.4.2"
   },
   "devDependencies": {
     "@types/node": "^25.5.2",
