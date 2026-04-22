@@ -51,3 +51,18 @@ Enqueue →  [ sync-users | purge-cache | notify-slack ]  → Dequeue
 | Peek front | `queue.Peek()` | `deque[0]` | `arr[0]` |
 | Size | `queue.Count` | `len(deque)` | `arr.length` |
 | Note | — | `list.pop(0)` is O(n); use `deque` | `shift()` is O(n); fine for small queues |
+
+## Library Implementations (06)
+
+When you need a dedicated, purpose-built queue rather than a bare `deque` or array:
+
+| Language | Library | Type | Notes |
+|----------|---------|------|-------|
+| Python | `queue` (stdlib) | `Queue[T]` | Thread-safe FIFO; uses internal locks. Best for multi-threaded producer/consumer patterns. |
+| TypeScript | `js-sdsl` | `Queue<T>` | O(1) amortized `pop()` vs array `shift()` which is O(n). Explicit `.front()` peek. |
+
+**When to choose the library type:**
+- Python: use `queue.Queue` for multi-threaded task pipelines; use `collections.deque` for single-threaded loops.
+- TypeScript: use `js-sdsl Queue<T>` for performance-sensitive code with large queues; use a plain array for small, simple cases.
+
+See `06_library_example.py` for the runnable example.

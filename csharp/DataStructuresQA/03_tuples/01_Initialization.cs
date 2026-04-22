@@ -29,7 +29,7 @@ internal static class Initialization
         Console.WriteLine($"(X,Y) = ({point.X}, {point.Y})");
 
         var status = (Code: 200, Message: "OK", IsSuccess: true);
-        Console.WriteLine($"HTTP: {status.Code} {status.Message} success={status.IsSuccess}");
+        Console.WriteLine($"HTTP: {status.Code} {status.Message} success={status.IsSuccess}");;
     }
 
     private static void FunctionReturns()
